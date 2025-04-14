@@ -24,12 +24,13 @@ class MainWindow:
         self.root.minsize(800, 600)
 
         # Set window icon if available
-        try:
-            import os
-            if os.path.exists("assets/icons/app_icon.ico"):
-                self.root.iconbitmap("assets/icons/app_icon.ico")
-        except Exception:
-            pass
+        # Commented out for now as we don't have a proper icon file
+        # try:
+        #     import os
+        #     if os.path.exists("assets/icons/app_icon.ico"):
+        #         self.root.iconbitmap("assets/icons/app_icon.ico")
+        # except Exception:
+        #     pass
 
         # Set up components
         self._setup_styles()
