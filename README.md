@@ -1,181 +1,120 @@
-# Meta Ads Library Scraper
+# MetaAdsLibraryScraper
 
-Uma aplicação para extrair e analisar dados da API da Meta Ads Library com interface gráfica amigável.
+A robust Python-based tool with a graphical interface for extracting and analyzing advertising data from the Meta Ads Library API. It simplifies data retrieval through customizable search filters and enables export to Excel for comprehensive analysis.
 
 ![Meta Ads Library Scraper](assets/icons/app_preview.png)
 
-## Índice
+## Table of Contents
 
-- [Visão Geral](#visão-geral)
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Como Usar](#como-usar)
-  - [Configuração da API](#configuração-da-api)
-  - [Pesquisa de Anúncios](#pesquisa-de-anúncios)
-  - [Visualização de Resultados](#visualização-de-resultados)
-  - [Exportação de Dados](#exportação-de-dados)
-- [Parâmetros de Pesquisa](#parâmetros-de-pesquisa)
-- [Solução de Problemas](#solução-de-problemas)
-- [Perguntas Frequentes](#perguntas-frequentes)
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage Guide](#usage-guide)
+  - [API Configuration](#api-configuration)
+  - [Searching for Ads](#searching-for-ads)
+  - [Data Visualization & Export](#data-visualization--export)
+- [Search Parameters](#search-parameters)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
 
-## Visão Geral
+## Overview
 
-O Meta Ads Library Scraper é uma ferramenta que permite extrair dados da API da Biblioteca de Anúncios da Meta (Facebook, Instagram, etc.) de forma simples e eficiente. Com esta aplicação, você pode:
+The MetaAdsLibraryScraper is designed for marketers, researchers, and developers who need to interact with the Meta Ads Library API without dealing with complex command-line tools. It provides a streamlined, user-friendly way to fetch ad creatives, copy, and metadata based on specific criteria.
 
-- Pesquisar anúncios usando diversos critérios e filtros
-- Visualizar os resultados em uma interface amigável
-- Exportar os dados para Excel para análise posterior
-- Configurar facilmente sua conexão com a API da Meta
+## Features
 
-## Requisitos
+- **Intuitive GUI**: Built with Python's `tkinter` for easy navigation.
+- **Advanced Filtering**: Filter ads by keywords, country, date range, platforms, and ad type.
+- **Data Export**: Save results directly to `.xlsx` (Excel) format for further analysis.
+- **Token Management**: Securely save and validate your Meta API access token.
+- **Real-time Monitoring**: Track the scraping progress directly in the interface.
 
-- Python 3.7 ou superior
-- Conexão com a internet
-- Token de acesso à API da Meta Ads Library
-- Bibliotecas Python (instaladas automaticamente):
-  - tkinter
-  - requests
-  - pandas
-  - openpyxl
-  - python-dotenv
-  - Pillow
+## Prerequisites
 
-## Instalação
+- Python 3.7+
+- Internet connection
+- Meta for Developers account (for API access token)
+- Python libraries (automatically installed via `requirements.txt`):
+  - `tkinter`
+  - `requests`
+  - `pandas`
+  - `openpyxl`
+  - `python-dotenv`
+  - `Pillow`
 
-1. Clone ou baixe este repositório para seu computador
-2. Abra um terminal ou prompt de comando na pasta do projeto
-3. Instale as dependências necessárias:
+## Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. **Clone the repository:**
+   bash
+   git clone https://github.com/yourusername/scraper_ads.git
+   cd scraper_ads
+   
 
-4. Execute a aplicação:
+2. **Install dependencies:**
+   bash
+   pip install -r requirements.txt
+   
 
-```bash
-python main.py
-```
+3. **Run the application:**
+   bash
+   python main.py
+   
 
-## Como Usar
+## Usage Guide
 
-### Configuração da API
+### API Configuration
 
-Antes de começar a usar a aplicação, você precisa configurar seu token de acesso à API da Meta Ads Library:
+Before searching, you must configure your Meta API token:
 
-1. Ao iniciar a aplicação pela primeira vez, você será direcionado automaticamente para a aba "Configuration"
-2. Siga os passos indicados na tela para obter um token de acesso:
-   - Crie uma conta Meta for Developers
-   - Crie um novo aplicativo
-   - Gere um token de acesso com permissão `ads_read`
-3. Cole o token no campo "Access Token"
-4. Clique em "Save Token" para salvar
-5. Clique em "Validate Token" para verificar se o token é válido
+1. Upon launching the app, navigate to the **Configuration** tab.
+2. Obtain your Access Token from the [Meta for Developers Portal](https://developers.facebook.com/).
+   - Ensure the token has the `ads_read` permission.
+3. Paste the token into the "Access Token" field.
+4. Click **Save Token** to store it locally.
+5. Click **Validate Token** to verify connectivity.
 
-![Configuração da API](assets/icons/config_tab.png)
+### Searching for Ads
 
-### Pesquisa de Anúncios
+1. Switch to the **Search** tab.
+2. Enter your search criteria:
+   - **Search Terms**: Keywords to look for in ad text.
+   - **Ad Type**: Specific categories (e.g., Political, Housing, Employment).
+   - **Countries**: Comma-separated country codes (e.g., `US, BR, CA`).
+   - **Date Range**: Start and end dates for the ad run period.
+   - **Platforms**: Where the ads appeared (Facebook, Instagram, Audience Network).
+   - **Ad Status**: Active, Inactive, or All.
+3. Click **Search Ads** to initiate the data extraction.
 
-Após configurar seu token de API, você pode começar a pesquisar anúncios:
+### Data Visualization & Export
 
-1. Vá para a aba "Search"
-2. Preencha os campos de pesquisa conforme necessário:
-   - **Search Terms**: Palavras-chave para buscar nos anúncios
-   - **Ad Type**: Tipo de anúncio (político, habitação, emprego, etc.)
-   - **Countries**: Países onde os anúncios foram exibidos (códigos de país separados por vírgula)
-   - **Date Range**: Intervalo de datas para a pesquisa
-   - **Platforms**: Plataformas onde os anúncios foram exibidos (Facebook, Instagram, etc.)
-   - **Ad Status**: Status dos anúncios (ativos, inativos, todos)
-3. Clique no botão "Search Ads" para iniciar a pesquisa
+- View results in the **Results** tab, where ads are listed with their respective details.
+- Click on a specific ad entry to view creative details (if available).
+- Use the **Export to Excel** button to save the full dataset to a spreadsheet.
 
-![Pesquisa de Anúncios](assets/icons/search_tab.png)
+## Search Parameters
 
-### Visualização de Resultados
+The tool utilizes the official Meta Ads Library API endpoints. Key parameters include:
 
-Os resultados da pesquisa serão exibidos na área abaixo das abas:
+- `search_terms`: String for keyword matching.
+- `ad_reached_countries`: List of ISO 3166-1 alpha-2 country codes.
+- `ad_type`: Options include `ALL`, `POLITICAL_AND_ISSUE_ADVERTISING`, `HOUSING`, `EMPLOYMENT`, `CREDIT`.
+- `start_date` / `end_date`: Format `YYYY-MM-DD`.
+- `platforms`: List of platforms like `FACEBOOK`, `INSTAGRAM`.
 
-1. A tabela mostra uma visão geral dos anúncios encontrados
-2. Clique em um anúncio na tabela para ver detalhes adicionais no painel à direita
-3. Use a barra de rolagem para navegar pelos resultados
-4. Clique duas vezes em um anúncio ou use o botão "Open Ad in Browser" para ver o anúncio original no navegador
+## Troubleshooting
 
-![Visualização de Resultados](assets/icons/results_view.png)
+- **"Token Invalid" Error**: Ensure your token has not expired and includes the `ads_read` permission.
+- **No Results Found**: Broaden your search terms or remove country filters. Note that the API might not return data for very specific/low-volume queries.
+- **App Crashes on Start**: Ensure `tkinter` is installed (it is often included with Python, but may require separate installation on Linux: `sudo apt-get install python3-tk`).
 
-### Exportação de Dados
+## FAQ
 
-Você pode exportar os resultados da pesquisa para um arquivo Excel:
+**Q: Is this tool free to use?**
+A: Yes, the software is open source. However, usage of the Meta API is subject to Meta's [Platform Terms](https://developers.facebook.com/terms) and data usage policies.
 
-1. Após realizar uma pesquisa, clique no botão "Export to Excel"
-2. Escolha um local e nome para salvar o arquivo
-3. O arquivo Excel conterá várias abas:
-   - **Ad Data**: Informações básicas sobre os anúncios
-   - **Demographics**: Dados demográficos (se disponíveis)
-   - **Search Parameters**: Parâmetros usados na pesquisa
+**Q: Does this scrape data without API access?**
+A: No, this tool relies entirely on the official Meta Ads Library API. You must have a valid access token.
 
-## Parâmetros de Pesquisa
-
-### Search Terms
-Palavras-chave para buscar no conteúdo dos anúncios. Você pode usar termos simples ou frases.
-
-### Ad Type
-- **ALL**: Todos os tipos de anúncios
-- **POLITICAL_AND_ISSUE_ADS**: Anúncios políticos ou sobre questões sociais
-- **HOUSING_ADS**: Anúncios de habitação ou imóveis
-- **EMPLOYMENT_ADS**: Anúncios de emprego
-- **FINANCIAL_PRODUCTS_AND_SERVICES_ADS**: Anúncios de produtos financeiros
-
-### Countries
-Códigos de país ISO de duas letras, separados por vírgula (ex: US,BR,DE).
-
-### Date Range
-Intervalo de datas em que os anúncios foram veiculados, no formato YYYY-MM-DD.
-
-### Platforms
-- **Facebook**: Anúncios exibidos no Facebook
-- **Instagram**: Anúncios exibidos no Instagram
-- **Audience Network**: Anúncios exibidos na rede de parceiros da Meta
-- **Messenger**: Anúncios exibidos no Messenger
-- **WhatsApp**: Anúncios exibidos no WhatsApp
-
-### Ad Status
-- **ACTIVE**: Anúncios atualmente ativos
-- **INACTIVE**: Anúncios que não estão mais ativos
-- **ALL**: Todos os anúncios, independentemente do status
-
-## Solução de Problemas
-
-### Token Inválido
-Se seu token for rejeitado, verifique se:
-- O token não expirou (tokens geralmente expiram após algumas horas)
-- Você tem as permissões corretas (ads_read)
-- Você colou o token completo, sem espaços extras
-
-### Nenhum Resultado Encontrado
-Se sua pesquisa não retornar resultados, tente:
-- Usar termos de pesquisa mais amplos
-- Expandir o intervalo de datas
-- Verificar se os códigos de país estão corretos
-- Selecionar mais plataformas
-
-### Aplicação Lenta
-Se a aplicação estiver lenta, considere:
-- Limitar sua pesquisa com filtros mais específicos
-- Reduzir o intervalo de datas
-- Verificar sua conexão com a internet
-
-## Perguntas Frequentes
-
-### Quantos anúncios posso extrair de uma vez?
-A API da Meta tem limites de taxa. Por padrão, a aplicação tenta obter até 1000 anúncios por pesquisa, mas você pode ajustar esse valor nas configurações avançadas.
-
-### Os dados são atualizados em tempo real?
-Sim, a aplicação consulta diretamente a API da Meta, então os dados são os mais recentes disponíveis.
-
-### Posso salvar minhas configurações de pesquisa?
-Atualmente, apenas o token de API é salvo entre sessões. As configurações de pesquisa precisam ser inseridas novamente a cada vez.
-
-### É possível automatizar pesquisas?
-Esta versão da aplicação é focada na interface gráfica. Para automação, considere usar diretamente os módulos Python em scripts personalizados.
-
----
-
-Desenvolvido com ❤️ para facilitar o acesso e análise de dados da Meta Ads Library.
+**Q: Can I download the actual ad images?**
+A: The API provides links to media assets. The tool allows you to export these links, but bulk downloading images may require specific configurations or additional tools due to API rate limits.
